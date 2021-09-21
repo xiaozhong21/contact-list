@@ -9,6 +9,7 @@ module.exports = {
   ],
   rules: {
     "jsx-a11y/no-onchange": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
     "import/no-unresolved": "error",
     "import/order": [
       "error",
