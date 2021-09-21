@@ -2,20 +2,45 @@ import React from "react";
 
 import Container from "./Container/Container.js";
 
+const initialState = {
+  id: "",
+  name: "",
+  email: "",
+  phone: "",
+  notes: "",
+  funfact: "",
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "editId":
+      return { ...state, id: action.payload };
+    case "editName":
+      return { ...state, name: action.payload };
+    case "editEmail":
+      return { ...state, email: action.payload };
+    case "editPhone":
+      return { ...state, phone: action.payload };
+    case "editNotes":
+      return { ...state, notes: action.payload };
+    case "editFunfact":
+      return { ...state, funfact: action.payload };
+    case "clearForm":
+      return initialState;
+    default:
+      return state;
+  }
+};
+
 const ContactsList = ({
   contacts,
   editContact,
   deleteContact,
   setSelectedContact,
 }) => {
-  const [id, setId] = React.useState();
-  const [name, setName] = React.useState();
-  const [email, setEmail] = React.useState();
-  const [phone, setPhone] = React.useState();
-  const [notes, setNotes] = React.useState();
-  const [funfact, setFunfact] = React.useState();
+  const [state, dispatch] = React.useReducer(reducer, initialState);
 
-  const onSubmit = (e) => {
+  const handleEditFormSubmit = (e) => {
     e.preventDefault();
 
     const form = e.currentTarget;
@@ -38,7 +63,9 @@ const ContactsList = ({
       },
       id,
     );
-    form.reset();
+    dispatch({
+      type: "clearForm",
+    });
   };
 
   return (
@@ -64,19 +91,9 @@ const ContactsList = ({
               <td>
                 <Container
                   {...{
-                    id,
-                    name,
-                    email,
-                    phone,
-                    notes,
-                    funfact,
-                    setId,
-                    setName,
-                    setEmail,
-                    setPhone,
-                    setNotes,
-                    setFunfact,
-                    onSubmit,
+                    state,
+                    dispatch,
+                    handleEditFormSubmit,
                   }}
                 />
                 <button onClick={() => setSelectedContact(id)}>Details</button>

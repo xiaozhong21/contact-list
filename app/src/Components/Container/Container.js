@@ -39,19 +39,9 @@ export class Container extends Component {
         />
         {this.state.isShown ? (
           <Modal
-            id={this.props.id}
-            name={this.props.name}
-            email={this.props.email}
-            phone={this.props.phone}
-            notes={this.props.notes}
-            funfact={this.props.funfact}
-            setId={this.props.setId}
-            setName={this.props.setName}
-            setEmail={this.props.setEmail}
-            setPhone={this.props.setPhone}
-            setNotes={this.props.setNotes}
-            setFunfact={this.props.setFunfact}
-            onSubmit={this.props.onSubmit}
+            state={this.props.state}
+            dispatch={this.props.dispatch}
+            handleEditFormSubmit={this.props.handleEditFormSubmit}
             modalRef={(n) => (this.modal = n)}
             buttonRef={(n) => (this.closeButton = n)}
             closeModal={this.closeModal}

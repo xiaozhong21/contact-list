@@ -1,29 +1,20 @@
 import React from "react";
 
-const Form = ({
-  id,
-  name,
-  email,
-  phone,
-  notes,
-  funfact,
-  setId,
-  setName,
-  setEmail,
-  setPhone,
-  setNotes,
-  setFunfact,
-  onSubmit,
-}) => {
+const Form = ({ state, dispatch, handleEditFormSubmit }) => {
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleEditFormSubmit}>
       <div className="form-group">
         <label htmlFor="id">ID</label>
         <input
           className="form-control"
           id="id"
-          value={id}
-          onChange={(e) => setId(e.target.value)}
+          value={state.id}
+          onChange={(e) =>
+            dispatch({
+              type: "editId",
+              payload: e.target.value,
+            })
+          }
         />
       </div>
       <div className="form-group">
@@ -31,8 +22,13 @@ const Form = ({
         <input
           className="form-control"
           id="name"
-          defaultValue={name}
-          onChange={(e) => setName(e.target.value)}
+          defaultValue={state.name}
+          onChange={(e) =>
+            dispatch({
+              type: "editName",
+              payload: e.target.value,
+            })
+          }
         />
       </div>
       <div className="form-group">
@@ -41,8 +37,13 @@ const Form = ({
           type="email"
           className="form-control"
           id="email"
-          defaultValue={email}
-          onChange={(e) => setEmail(e.target.value)}
+          defaultValue={state.email}
+          onChange={(e) =>
+            dispatch({
+              type: "editEmail",
+              payload: e.target.value,
+            })
+          }
         />
       </div>
       <div className="form-group">
@@ -50,8 +51,13 @@ const Form = ({
         <input
           className="form-control"
           id="phone"
-          defaultValue={phone}
-          onChange={(e) => setPhone(e.target.value)}
+          defaultValue={state.phone}
+          onChange={(e) =>
+            dispatch({
+              type: "editPhone",
+              payload: e.target.value,
+            })
+          }
         />
       </div>
       <div className="form-group">
@@ -59,8 +65,13 @@ const Form = ({
         <input
           className="form-control"
           id="notes"
-          defaultValue={notes}
-          onChange={(e) => setNotes(e.target.value)}
+          defaultValue={state.notes}
+          onChange={(e) =>
+            dispatch({
+              type: "editNotes",
+              payload: e.target.value,
+            })
+          }
         />
       </div>
       <div className="form-group">
@@ -68,8 +79,13 @@ const Form = ({
         <input
           className="form-control"
           id="funfact"
-          defaultValue={funfact}
-          onChange={(e) => setFunfact(e.target.value)}
+          defaultValue={state.funfact}
+          onChange={(e) =>
+            dispatch({
+              type: "editFunfact",
+              payload: e.target.value,
+            })
+          }
         />
       </div>
       <div className="form-group">
