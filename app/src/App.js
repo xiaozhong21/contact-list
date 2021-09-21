@@ -2,7 +2,8 @@ import * as React from "react";
 
 import { Routes, Route, Link } from "react-router-dom";
 
-import Tasks from "./Tasks";
+import Home from "./Home";
+import "./styles.module.scss";
 
 const App = () => (
   <main>
@@ -14,14 +15,6 @@ const App = () => (
       <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
   </main>
-);
-
-const Home = () => (
-  <>
-    <h1>{process.env.REACT_APP_TITLE}</h1>
-    <h2>{process.env.REACT_APP_SUBTITLE}</h2>
-    <Tasks />
-  </>
 );
 
 const Dashboard = () => (

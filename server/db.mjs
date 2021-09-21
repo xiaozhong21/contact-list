@@ -3,10 +3,15 @@ import pgp from "pg-promise";
 
 const db = initDb();
 
-export const getTasks = () => db.any("SELECT * FROM tasks");
+export const getContacts = () => db.any("SELECT * FROM contacts");
 
-export const addTask = (name) =>
-  db.one("INSERT INTO tasks(name) VALUES(${name}) RETURNING *", { name });
+export const getContact = (id) => db.one(`SELECT * FROM contacts WHERE id=${id}`, {id});
+
+export const addContact = (contact) =>
+db.one("INSERT INTO contacts(name, email, phone, notes) VALUES(${name}, ${email}, ${phone}, ${notes}) RETURNING *", contact);
+
+export const editContact = (contact, id) =>
+db.one("UPDATE contacts SET name=${name}, email=${email}, phone=${phone}, notes=${notes} WHERE id=${id} RETURNING *", contact, id);
 
 function initDb() {
   let connection;
