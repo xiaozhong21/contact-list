@@ -8,6 +8,7 @@ const AddContact = ({ addContact }) => {
       email: { value: email },
       phone: { value: phone },
       notes: { value: notes },
+      funfact: { value: funfact },
     } = form.elements;
 
     e.preventDefault();
@@ -16,6 +17,7 @@ const AddContact = ({ addContact }) => {
       email,
       phone,
       notes,
+      funfact,
     });
     form.reset();
   };
@@ -32,6 +34,8 @@ const AddContact = ({ addContact }) => {
         <input id="phone" name="phone" />
         <label htmlFor="notes">Notes: </label>
         <input id="notes" name="notes" />
+        <label htmlFor="funfact">Funfact: </label>
+        <input id="funfact" name="funfact" />
         <button>Add Contact</button>
       </form>
     </>

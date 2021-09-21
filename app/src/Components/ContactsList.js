@@ -1,15 +1,20 @@
+import React from "react";
+
 import Container from "./Container/Container.js";
 
-const Contacts = ({
+const ContactsList = ({
   contacts,
   editContact,
-  setId,
-  setName,
-  setEmail,
-  setPhone,
-  setNotes,
+  deleteContact,
   setSelectedContact,
 }) => {
+  const [id, setId] = React.useState();
+  const [name, setName] = React.useState();
+  const [email, setEmail] = React.useState();
+  const [phone, setPhone] = React.useState();
+  const [notes, setNotes] = React.useState();
+  const [funfact, setFunfact] = React.useState();
+
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -20,6 +25,7 @@ const Contacts = ({
       email: { value: email },
       phone: { value: phone },
       notes: { value: notes },
+      funfact: { value: funfact },
     } = form.elements;
     editContact(
       {
@@ -28,6 +34,7 @@ const Contacts = ({
         email,
         phone,
         notes,
+        funfact,
       },
       id,
     );
@@ -44,11 +51,16 @@ const Contacts = ({
             <th>Email</th>
             <th>Phone</th>
             <th>Notes</th>
+            <th>More Otions</th>
           </tr>
         </thead>
         <tbody>
-          {contacts.map(({ id, name, email, phone, notes }) => (
-            <tr key={id} onClick={() => setSelectedContact(id)}>
+          {contacts.map(({ id, name, email, phone, notes, funfact }) => (
+            <tr key={id}>
+              <td>{name}</td>
+              <td>{email}</td>
+              <td>{phone}</td>
+              <td>{notes}</td>
               <td>
                 <Container
                   {...{
@@ -57,21 +69,19 @@ const Contacts = ({
                     email,
                     phone,
                     notes,
-                    contacts,
+                    funfact,
                     setId,
                     setName,
                     setEmail,
                     setPhone,
                     setNotes,
+                    setFunfact,
                     onSubmit,
                   }}
                 />
-                {/* <button onClick={() => setSelectedContact(id)}>Details</button> */}
-                {name}
+                <button onClick={() => setSelectedContact(id)}>Details</button>
+                <button onClick={() => deleteContact(id)}>Delete</button>
               </td>
-              <td>{email}</td>
-              <td>{phone}</td>
-              <td>{notes}</td>
             </tr>
           ))}
         </tbody>
@@ -80,4 +90,4 @@ const Contacts = ({
   );
 };
 
-export default Contacts;
+export default ContactsList;

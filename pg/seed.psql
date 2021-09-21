@@ -53,10 +53,10 @@ ALTER TABLE public.contacts ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 --
 
 COPY public.contacts (id, name, email, phone, notes, funfact) FROM stdin;
+1	Jamie Smith	jamie@example.com	123-456-7890	Software Engineer	If Jamie could have any superpower, it would be time travel
 2	Bill Anderson	bill@example.com	234-567-8901	Teacher	One thing Bill cannot live without is air fryer
 3	Valeria Lopez	valeria@example.com	345-678-9012	Lawyer	A perfect day for Valeria would start with a cup of coffee and end with a cup of jasmine tea
 4	Pedro Martinez	pedro@example.com	456-789-0123	Banker	If Pedro could live anywhere in the world, it would be Iceland
-1	Jamie Smith	jamie@example.com	123-456-7890	Software Engineer	If Jamie could have any superpower, it would be time travel
 5	Xiao Zhong	xiao@example.com	423-124-2324	Student	Xiao likes cooking but hates washing dishes
 6	Tyler P	tyler@example.com	234-312-4325	IT	Tyler likes washing dishes but hates cooking
 \.

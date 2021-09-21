@@ -44,11 +44,13 @@ export class Container extends Component {
             email={this.props.email}
             phone={this.props.phone}
             notes={this.props.notes}
+            funfact={this.props.funfact}
             setId={this.props.setId}
             setName={this.props.setName}
             setEmail={this.props.setEmail}
             setPhone={this.props.setPhone}
             setNotes={this.props.setNotes}
+            setFunfact={this.props.setFunfact}
             onSubmit={this.props.onSubmit}
             modalRef={(n) => (this.modal = n)}
             buttonRef={(n) => (this.closeButton = n)}

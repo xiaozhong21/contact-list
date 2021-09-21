@@ -11,6 +11,7 @@ const Modal = ({
   email,
   phone,
   notes,
+  funfact,
   onClickOutside,
   onKeyDown,
   modalRef,
@@ -22,6 +23,7 @@ const Modal = ({
   setEmail,
   setPhone,
   setNotes,
+  setFunfact,
 }) => {
   return ReactDOM.createPortal(
     <FocusTrap>
@@ -57,11 +59,13 @@ const Modal = ({
                 email,
                 phone,
                 notes,
+                funfact,
                 setId,
                 setName,
                 setEmail,
                 setPhone,
                 setNotes,
+                setFunfact,
                 onSubmit,
               }}
             />

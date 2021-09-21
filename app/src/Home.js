@@ -2,18 +2,13 @@ import React from "react";
 
 import AddContact from "./Components/AddContact";
 import ContactDetail from "./Components/ContactDetail";
-import Contacts from "./Components/Contacts";
+import ContactsList from "./Components/ContactsList";
 import * as apiClient from "./apiClient";
 
 const Home = () => {
   const [contacts, setContacts] = React.useState([]);
   const [selectedContact, setSelectedContact] = React.useState("");
   const [contactDetails, setContactDetails] = React.useState({});
-  const [id, setId] = React.useState();
-  const [name, setName] = React.useState();
-  const [email, setEmail] = React.useState();
-  const [phone, setPhone] = React.useState();
-  const [notes, setNotes] = React.useState();
 
   const loadContacts = async () => setContacts(await apiClient.getContacts());
 
@@ -25,6 +20,10 @@ const Home = () => {
   const editContact = async (contact, id) => {
     await apiClient.editContact(contact, id);
     loadContacts();
+  };
+
+  const deleteContact = (id) => {
+    apiClient.deleteContact(id).then(loadContacts);
   };
 
   const loadContact = React.useCallback(
@@ -42,24 +41,14 @@ const Home = () => {
 
   return (
     <section>
-      <Contacts
+      <ContactsList
         {...{
           contacts,
-          id,
-          name,
-          email,
-          phone,
-          notes,
-          setId,
-          setName,
-          setEmail,
-          setPhone,
-          setNotes,
           editContact,
+          deleteContact,
           setSelectedContact,
         }}
       />
-      {/* <Contacts {...{ contacts, values, set }} /> */}
       {selectedContact ? (
         <ContactDetail {...{ selectedContact, contactDetails }} />
       ) : null}

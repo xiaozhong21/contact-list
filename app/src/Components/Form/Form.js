@@ -6,11 +6,13 @@ const Form = ({
   email,
   phone,
   notes,
+  funfact,
   setId,
   setName,
   setEmail,
   setPhone,
   setNotes,
+  setFunfact,
   onSubmit,
 }) => {
   return (
@@ -59,6 +61,15 @@ const Form = ({
           id="notes"
           defaultValue={notes}
           onChange={(e) => setNotes(e.target.value)}
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="funfact">Funfact</label>
+        <input
+          className="form-control"
+          id="funfact"
+          defaultValue={funfact}
+          onChange={(e) => setFunfact(e.target.value)}
         />
       </div>
       <div className="form-group">

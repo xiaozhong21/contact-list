@@ -7,6 +7,8 @@ export const addContact = (contact) => _post("/api/contacts", contact);
 export const editContact = (contact, id) =>
   _put(`/api/contacts/${id}`, contact);
 
+export const deleteContact = (id) => _delete(`/api/contacts/${id}`);
+
 const _get = async (url) => (await fetch(url)).json();
 
 const _post = async (url, body) => {
@@ -36,3 +38,5 @@ const _put = async (url, body) => {
 
   return result;
 };
+
+const _delete = (url) => fetch(url, { method: "DELETE" });
