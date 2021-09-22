@@ -8,14 +8,7 @@ const ContactsList = ({
   deleteContact,
   setSelectedContact,
 }) => {
-  const [id, setId] = React.useState();
-  const [name, setName] = React.useState();
-  const [email, setEmail] = React.useState();
-  const [phone, setPhone] = React.useState();
-  const [notes, setNotes] = React.useState();
-  const [funfact, setFunfact] = React.useState();
-
-  const onSubmit = (e) => {
+  const handleEditFormSubmit = (e) => {
     e.preventDefault();
 
     const form = e.currentTarget;
@@ -27,17 +20,7 @@ const ContactsList = ({
       notes: { value: notes },
       funfact: { value: funfact },
     } = form.elements;
-    editContact(
-      {
-        id,
-        name,
-        email,
-        phone,
-        notes,
-        funfact,
-      },
-      id,
-    );
+    editContact({ id, name, email, phone, notes, funfact }, id);
     form.reset();
   };
 
@@ -55,32 +38,20 @@ const ContactsList = ({
           </tr>
         </thead>
         <tbody>
-          {contacts.map(({ id, name, email, phone, notes, funfact }) => (
-            <tr key={id}>
-              <td>{name}</td>
-              <td>{email}</td>
-              <td>{phone}</td>
-              <td>{notes}</td>
+          {contacts.map((contact) => (
+            <tr key={contact.id}>
+              <td>{contact.name}</td>
+              <td>{contact.email}</td>
+              <td>{contact.phone}</td>
+              <td>{contact.notes}</td>
               <td>
-                <Container
-                  {...{
-                    id,
-                    name,
-                    email,
-                    phone,
-                    notes,
-                    funfact,
-                    setId,
-                    setName,
-                    setEmail,
-                    setPhone,
-                    setNotes,
-                    setFunfact,
-                    onSubmit,
-                  }}
-                />
-                <button onClick={() => setSelectedContact(id)}>Details</button>
-                <button onClick={() => deleteContact(id)}>Delete</button>
+                <Container {...{ contact, handleEditFormSubmit }} />
+                <button onClick={() => setSelectedContact(contact.id)}>
+                  Details
+                </button>
+                <button onClick={() => deleteContact(contact.id)}>
+                  Delete
+                </button>
               </td>
             </tr>
           ))}

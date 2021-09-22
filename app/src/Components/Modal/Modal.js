@@ -6,24 +6,13 @@ import FocusTrap from "focus-trap-react";
 import Form from "../Form/Form";
 
 const Modal = ({
-  id,
-  name,
-  email,
-  phone,
-  notes,
-  funfact,
+  contact,
+  handleEditFormSubmit,
   onClickOutside,
   onKeyDown,
   modalRef,
   buttonRef,
   closeModal,
-  onSubmit,
-  setId,
-  setName,
-  setEmail,
-  setPhone,
-  setNotes,
-  setFunfact,
 }) => {
   return ReactDOM.createPortal(
     <FocusTrap>
@@ -52,23 +41,7 @@ const Modal = ({
             </svg>
           </button>
           <div className="modal-body">
-            <Form
-              {...{
-                id,
-                name,
-                email,
-                phone,
-                notes,
-                funfact,
-                setId,
-                setName,
-                setEmail,
-                setPhone,
-                setNotes,
-                setFunfact,
-                onSubmit,
-              }}
-            />
+            <Form {...{ contact, handleEditFormSubmit }} />
           </div>
         </div>
       </aside>

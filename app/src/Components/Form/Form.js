@@ -1,39 +1,15 @@
 import React from "react";
 
-const Form = ({
-  id,
-  name,
-  email,
-  phone,
-  notes,
-  funfact,
-  setId,
-  setName,
-  setEmail,
-  setPhone,
-  setNotes,
-  setFunfact,
-  onSubmit,
-}) => {
+const Form = ({ contact, handleEditFormSubmit }) => {
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleEditFormSubmit}>
       <div className="form-group">
         <label htmlFor="id">ID</label>
-        <input
-          className="form-control"
-          id="id"
-          value={id}
-          onChange={(e) => setId(e.target.value)}
-        />
+        <input className="form-control" id="id" defaultValue={contact.id} />
       </div>
       <div className="form-group">
         <label htmlFor="name">Name</label>
-        <input
-          className="form-control"
-          id="name"
-          defaultValue={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+        <input className="form-control" id="name" defaultValue={contact.name} />
       </div>
       <div className="form-group">
         <label htmlFor="email">Email</label>
@@ -41,8 +17,7 @@ const Form = ({
           type="email"
           className="form-control"
           id="email"
-          defaultValue={email}
-          onChange={(e) => setEmail(e.target.value)}
+          defaultValue={contact.email}
         />
       </div>
       <div className="form-group">
@@ -50,8 +25,7 @@ const Form = ({
         <input
           className="form-control"
           id="phone"
-          defaultValue={phone}
-          onChange={(e) => setPhone(e.target.value)}
+          defaultValue={contact.phone}
         />
       </div>
       <div className="form-group">
@@ -59,8 +33,7 @@ const Form = ({
         <input
           className="form-control"
           id="notes"
-          defaultValue={notes}
-          onChange={(e) => setNotes(e.target.value)}
+          defaultValue={contact.notes}
         />
       </div>
       <div className="form-group">
@@ -68,8 +41,7 @@ const Form = ({
         <input
           className="form-control"
           id="funfact"
-          defaultValue={funfact}
-          onChange={(e) => setFunfact(e.target.value)}
+          defaultValue={contact.funfact}
         />
       </div>
       <div className="form-group">
